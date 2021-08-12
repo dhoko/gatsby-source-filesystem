@@ -1,5 +1,9 @@
 "use strict";
 
+const {
+  Agent
+} = require('http');
+
 const fs = require(`fs-extra`);
 
 const {
@@ -59,6 +63,10 @@ let showFlagWarning = !!process.env.GATSBY_EXPERIMENTAL_REMOTE_FILE_PLACEHOLDER;
  * @param  {Function} options.createNode
  * @param  {Function} options.getCache
  * @param  {Auth} [options.auth]
+ * @param  {Object} [options.httpOptions]
+ * @param  {Object} [options.httpOptions.agent]
+ * @param  {Agent} [options.httpOptions.agent.http]
+ * @param  {Agent} [options.httpOptions.agent.https]
  * @param  {Reporter} [options.reporter]
  */
 
@@ -124,6 +132,7 @@ async function processRemoteNode({
   parentNodeId,
   auth = {},
   httpHeaders = {},
+  httpOptions = {},
   createNodeId,
   ext,
   name
@@ -144,6 +153,7 @@ async function processRemoteNode({
       cache,
       auth,
       httpHeaders,
+      httpOptions,
       ext,
       name
     });
@@ -229,6 +239,7 @@ module.exports = function createRemoteFileNode({
   getCache,
   parentNodeId = null,
   auth = {},
+  httpOptions = {},
   httpHeaders = {},
   createNodeId,
   ext = null,
@@ -281,6 +292,7 @@ module.exports = function createRemoteFileNode({
     parentNodeId,
     createNodeId,
     auth,
+    httpOptions,
     httpHeaders,
     ext,
     name

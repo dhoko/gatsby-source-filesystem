@@ -12,7 +12,7 @@
     "chokidar": "^3.4.3",
     "file-type": "^16.0.0",
     "fs-extra": "^8.1.0",
-    "gatsby-core-utils": "^2.7.1",
+    "gatsby-core-utils": "github:dhoko/gatsby-core-utils#master",
     "got": "^9.6.0",
     "md5-file": "^5.0.0",
     "mime": "^2.4.6",
